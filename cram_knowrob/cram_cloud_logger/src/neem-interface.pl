@@ -3,10 +3,6 @@
 
 mem_episode_start(Action) :- tf_logger_disable, tripledb_drop(),forall(mng_collection(roslog,Coll),mng_drop(roslog,Coll)), tf_logger_enable,
     tripledb_load('package://knowrob/owl/knowrob.owl',[graph(tbox),namespace(knowrob)]),
-    tripledb_load('package://iai_semantic_maps/owl/kitchen.owl'),
-    tripledb_load('package://knowrob/owl/robots/PR2.owl'),
-    urdf_load('http://knowrob.org/kb/PR2.owl#PR2_0', 'package://knowrob/urdf/pr2.urdf', [load_rdf]),
-    urdf_load('http://knowrob.org/kb/IAI-kitchen.owl#iai_kitchen_room_link', 'package://iai_kitchen/urdf_obj/iai_kitchen_python.urdf', [load_rdf,prefix('iai_kitchen/')]),
     tell([is_episode(Episode), is_action(Action), has_type(Task,soma:'PhysicalTask'), 
             executes_task(Action,Task),is_setting_for(Episode,Action)]),notify_synchronize(event(Action)),!.
 
