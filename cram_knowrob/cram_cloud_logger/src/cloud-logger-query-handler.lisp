@@ -86,7 +86,11 @@
 (defun stop-episode ()
   (ccl::stop-situation *episode-name*)
   ;;(send-query-1-without-result "delete_episode_name" *episode-name*)
+<<<<<<< HEAD
   (send-query-1-without-result "mem_episode_stop" (concatenate 'string "'/home/abdelker/avatar-ep/episodes'"))
+=======
+  (send-query-1-without-result "mem_episode_stop" (concatenate 'string "'home/abdelker/avatar-ep/episodes/'"))
+>>>>>>> 9bac851847cd22525d076d378805fa01d7387ef1
   (setf ccl::*episode-name* nil)
   (setf ccl::*is-logging-enabled* nil))
 
