@@ -65,14 +65,16 @@
   (send-query-1-without-result "mem_event_add_diagnosis" event-prolog-url diagnosis-url))
 
 (defun start-episode ()
+  (setf ccl::*is-logging-enabled* t)
+  (ccl::init-logging)
   (when *episode-name*
     (progn
       (print "Previous episode recording is still running. Stopping the recording ...")
       (stop-episode)))
   (setf ccl::*is-logging-enabled* t)
   (ccl::init-logging)
-  (let ((cram-episode-name "'NoName'"))
-             (when (string-not-equal "'NoName'"cram-episode-name)
+  (let ((cram-episode-name "'Avatar'"))
+             (when (string-not-equal "'Avatar'"cram-episode-name)
                (progn
                  (print "test"))))
                  ;;(setf ccl::*episode-name* cram-episode-name)
@@ -84,7 +86,7 @@
 (defun stop-episode ()
   (ccl::stop-situation *episode-name*)
   ;;(send-query-1-without-result "delete_episode_name" *episode-name*)
-  (send-query-1-without-result "mem_episode_stop" (concatenate 'string "'" (uiop:getenv "KNOWROB_MEMORY_DIR") "'"))
+  (send-query-1-without-result "mem_episode_stop" (concatenate 'string "'/home/abdelker/avatar-ep/episodes'"))
   (setf ccl::*episode-name* nil)
   (setf ccl::*is-logging-enabled* nil))
 

@@ -35,6 +35,7 @@
     (setf (gethash "BOWL" lookup-table) "'http://www.ease-crc.org/ont/SOMA.owl#Bowl'")
     (setf (gethash "CUP" lookup-table) "'http://www.ease-crc.org/ont/SOMA.owl#Cup'")
     (setf (gethash "DRAWER" lookup-table) "'http://www.ease-crc.org/ont/SOMA.owl#Drawer'")
+    (setf (gethash "PLATE" lookup-table) "'http://www.ease-crc.org/ont/SOMA.owl#Plate'")
     lookup-table))
 
 (cpl:define-task-variable *action-parents* '())
@@ -56,14 +57,15 @@
       (car *action-parents*)))
 
 (defun get-transform-of-detected-object (detected-object)
-  (let*
-      ((detected-object-transform (man-int:get-object-transform-in-map detected-object))
-       (translate (cl-transforms-stamped:translation detected-object-transform))
-       (quaternion (cl-transforms-stamped:rotation detected-object-transform)))
-    (concatenate
-     'string "['map',"
-     (send-create-3d-vector translate) ","
-     (send-create-quaternion quaternion)"]")))
+  "''")
+  ;;(let*
+  ;;    ((detected-object-transform (man-int:get-object-transform-in-map detected-object))
+  ;;     (translate (cl-transforms-stamped:translation detected-object-transform))
+  ;;     (quaternion (cl-transforms-stamped:rotation detected-object-transform)))
+  ;;  (concatenate
+  ;;   'string "['map',"
+  ;;   (send-create-3d-vector translate) ","
+  ;;   (send-create-quaternion quaternion)"]")))
 
 (defun is-action-parent ()
   (if (not *action-parents*) t nil))
