@@ -7,7 +7,7 @@ mem_episode_start(Action) :- retractall(execution_agent(_)),tf_logger_disable, t
     tripledb_load('package://iai_semantic_maps/owl/kitchen.owl'),
     tripledb_load('package://iai_avatar_description/Avatars/yasmin/owl/avatar_yasmin.owl'),
     urdf_load('http://knowrob.org/kb/avatar_yasmin.owl#avatar_yasmin_robot1', 'package://iai_avatar_description/Avatars/yasmin/urdf/avatar_yasmin.urdf', [load_rdf]),
-   urdf_load('http://knowrob.org/kb/IAI-kitchen.owl#iai_kitchen_room_link', 'package://iai_kitchen/urdf_obj/iai_kitchen_python.urdf.xarco', [load_rdf,prefix('iai_kitchen/')]),
+    urdf_load('http://knowrob.org/kb/IAI-kitchen.owl#iai_kitchen_room_link', 'package://iai_kitchen/urdf_obj/iai_kitchen_python.urdf.xarco', [load_rdf,prefix('iai_kitchen/')]),
     assertz(execution_agent('http://knowrob.org/kb/avatar_yasmin.owl#avatar_yasmin_robot1')),
     execution_agent(Agent),
     tell([is_episode(Episode), is_action(Action), has_type(Task,soma:'PhysicalTask'), 
