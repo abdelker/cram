@@ -253,4 +253,20 @@
   (<- (%property ?designator (:location ?location))
     (lisp-pred typep ?designator desig:object-designator)
     (property-member (:location ?location) ?designator)
-    (assert-type ?location desig:location-designator "OBJECT SPEC:PROPERTY")))
+      (assert-type ?location desig:location-designator "OBJECT SPEC:PROPERTY")))
+
+(def-fact-group object-designator-specs (%property)
+
+  (<- (%property ?designator (:type ?type))
+      (lisp-pred typep ?designator desig:object-designator)
+      (property-member (:type ?type) ?designator)
+      (assert-type ?type keyword "AGENT SPEC:PROPERTY"))
+
+  (<- (%property ?designator (?keyword-key ?name))
+      (lisp-pred typep ?designator desig:object-designator)
+      (member ?keyword-key (:name :urdf-name))
+      (property-member (?keyword-key ?name) ?designator)
+      (assert-type ?name symbol "AGENT SPEC:PROPERTY")))
+
+
+

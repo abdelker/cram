@@ -44,6 +44,10 @@
                                                       "designator-id-mixin"
                                                       "equate-notification-mixin"
                                                       "designator-protocol"))
+               (:file "agent-designator" :depends-on ("package"
+                                                      "designator-id-mixin"
+                                                      "equate-notification-mixin"
+                                                      "designator-protocol"))
                (:file "location-designator-filters"
                 :depends-on ("package" "location-designator"))
                (:file "facts" :depends-on ("package"
@@ -51,6 +55,7 @@
                                            "object-designator"
                                            "location-designator"
                                            "action-designator"
-                                           "motion-designator"))
+                                           "motion-designator"
+                                           "agent-designator"))
                (:file "utils" :depends-on ("package"))
                (:file "initialization-macros" :depends-on ("package"))))))))
